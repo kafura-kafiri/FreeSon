@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve myproject
+After=network.target
+
+[Service]
+User=pouria
+Group=www-data
+WorkingDirectory=/home/pouria/Projects/FreeSon
+Environment="PATH=/home/pouria/Projects/FreeSon/.venv/bin"
+ExecStart=/home/pouria/Projects/FreeSon/.venv/bin/gunicorn --bind 0.0.0.0:5000 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
